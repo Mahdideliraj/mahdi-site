@@ -46,15 +46,21 @@ $realatedProfessors = new WP_Query(array(
  if ($realatedProfessors->have_posts() ){
   echo '<hr class="section-break">';
   echo '<h2 class="headline headline--medium">' . get_the_title() . ' Professors</h2>';
-
+  echo '<ul class="professor_card">' ;
 while($realatedProfessors -> have_posts()){
   $realatedProfessors -> the_post(); ?>
 
     
-<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+<li class="professor-card__list-item" >
+  <a class="professor-card" href="<?php the_permalink(); ?>">
+  <img class="professor-card__image" src="<?php the_post_thumbnail_url(); ?>" alt="">
+  <span class="professor-card__name"> <?php the_title(); ?> </span>
+   <?php the_title(); ?>
+  </a>
+</li>
 
 <?php } 
-
+echo '</ul>';
  }
 
 
